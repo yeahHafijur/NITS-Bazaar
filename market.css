@@ -1,0 +1,182 @@
+/* ===== MARKETPLACE STYLES ===== */
+.market-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+#toggle-sold {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.55rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.2);
+}
+
+#toggle-sold:hover {
+  background: #3a7bc8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(74, 144, 226, 0.3);
+}
+
+#toggle-sold:active {
+  transform: scale(0.97);
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.item-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.item-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.item-info {
+  padding: 1rem;
+}
+
+.item-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.price {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.sold-badge {
+  color: red;
+  font-weight: bold;
+}
+
+/* ===== RENTAL SPECIFIC STYLES ===== */
+.rental-badge {
+  background: #FF9800;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.rental-price {
+  color: #FF9800;
+  font-weight: bold;
+}
+
+/* ===== EMPTY STATE STYLES ===== */
+.no-items {
+  text-align: center;
+  grid-column: 1/-1;
+  padding: 2rem;
+  color: var(--text);
+}
+
+.no-items a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===== DARK MODE ADJUSTMENTS ===== */
+.dark-mode .filter-bar input,
+.dark-mode .filter-bar select {
+  background: #333;
+  color: white;
+  border-color: #555;
+}
+
+.dark-mode .rental-badge {
+  background: #E67E22;
+}
+
+.dark-mode .rental-price {
+  color: #FFB74D;
+}
+
+.dark-mode .item-card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.dark-mode #toggle-sold {
+  background: #3a7bc8;
+}
+
+.dark-mode #toggle-sold:hover {
+  background: #2d66b3;
+  box-shadow: 0 6px 14px rgba(58, 123, 200, 0.4);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+  .item-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .rental-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+.posted-by {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.3rem;
+}

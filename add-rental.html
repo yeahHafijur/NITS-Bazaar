@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Rental - NITS Bazaar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="add-item.css" />
+  <script src="script.js" defer></script>
+  <script src="add-rental.js" defer></script>
+  <style>
+    .form-group.radio-options {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.2rem;
+      align-items: center;
+    }
+    
+    .form-group.radio-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+      user-select: none;
+    }
+    
+    .form-group.radio-options input[type="radio"] {
+      accent-color: var(--primary);
+    }
+    
+    .form-group.radio-options input[type="radio"]:checked + span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .form-group.radio-options input[type="radio"]:checked ~ label {
+      border-color: var(--primary);
+      background: rgba(74, 144, 226, 0.1);
+    }
+    
+    .form-group#link-section {
+      margin-top: 1rem;
+    }
+    
+    .form-group#link-section input {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 0.8rem;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 1rem;
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NITS Bazaar</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="market.html">🛒 Buy</a>
+      <a href="rentals.html">🧺 Rent</a>
+      <a href="add-rental.html" class="active">➕ Add Rental</a>
+      <div class="profile-dropdown" id="profile-menu" style="display: none;">
+        <button id="profile-btn">👤</button>
+        <div class="dropdown-content" id="dropdown-content">
+          <p id="user-name">Hi, user</p>
+          <a href="dashboard.html" style="padding: 0.5rem 1rem; display: block;">📊 My Dashboard</a>
+          <button id="logout-btn">🚪 Logout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="add-item-container">
+    <h2>List Your Rental Item</h2>
+    <form id="add-rental-form">
+
+      <!-- Image Source Choice -->
+      <div class="form-group radio-options">
+        <label><input type="radio" name="image-source" value="upload" checked> Upload from device</label>
+        <label><input type="radio" name="image-source" value="link"> Paste image link</label>
+      </div>
+
+      <!-- Image Upload Section -->
+      <div class="image-upload" id="upload-section">
+        <label for="rental-image">
+          <div class="image-preview" id="image-preview">
+            <span>+ Upload Image</span>
+          </div>
+        </label>
+        <input type="file" id="rental-image" accept="image/*" hidden>
+      </div>
+
+      <!-- Link Section -->
+      <div class="form-group" id="link-section">
+        <label for="image-link">Image URL</label>
+        <input type="url" id="image-link" placeholder="https://example.com/image.jpg">
+      </div>
+
+      <div class="form-group">
+        <label for="item-title">Title*</label>
+        <input type="text" id="item-title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="item-desc">Description*</label>
+        <textarea id="item-desc" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="item-category">Category*</label>
+        <select id="item-category" required>
+          <option value="">Select</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Stationary">Stationary</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rental-price">Rental Price (₹)*</label>
+        <input type="number" id="rental-price" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rental-period">Rental Period*</label>
+        <select id="rental-period" required>
+          <option value="hourly">Hourly</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="rental-deposit">Security Deposit (₹)</label>
+        <input type="number" id="rental-deposit" value="0" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="item-contact">Contact Number*</label>
+        <input type="tel" id="item-contact" pattern="[0-9]{10}" required>
+      </div>
+
+      <button type="submit" class="submit-btn">List for Rent</button>
+    </form>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="modal" id="success-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>🎉 Rental Item Added!</h3>
+      <p>Your rental item is now visible on the Rentals page.</p>
+      <div class="modal-buttons">
+        <button id="view-item">View Rentals</button>
+        <button id="add-another">Add Another</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

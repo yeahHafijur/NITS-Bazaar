@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Favorites - NITS Bazaar</title>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="market.css"> <!-- Use marketplace styling -->
+
+  <style>
+    .no-items {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text);
+    }
+    .no-items a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>NITS Bazaar</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="market.html">🛒 Buy</a>
+      <a href="rentals.html">🧺 Rent</a>
+      <a href="favorites.html" class="active">❤️ Favorites</a>
+      
+    </nav>
+  </header>
+
+  <!-- Favorites Grid -->
+  <main class="market-container">
+    <h2>Your Saved Items</h2>
+    <div class="item-grid" id="favorites-container">
+      <!-- JS will load favorite cards here -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Made with ❤️ at NIT Silchar</p>
+  </footer>
+
+  <!-- JS Files -->
+  <script src="script.js"></script>
+  <script src="favorites.js"></script>
+
+</body>
+</html>

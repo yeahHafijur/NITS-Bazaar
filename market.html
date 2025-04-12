@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace - NITS Bazaar</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="market.css">
+</head>
+<body>
+    <header>
+        <h1>NITS Bazaar</h1>
+        <nav>
+            <a href="index.html">🏠 Home</a>
+            <a href="market.html">🛒 Buy</a>
+            <a href="add-item.html">➕ add item</a>
+            <a href="rentals.html">🧺 Rent</a> 
+            <div class="profile-dropdown" id="profile-menu" style="display: none;">
+              <button id="profile-btn">👤</button>
+              <div class="dropdown-content" id="dropdown-content">
+                <p id="user-name">Hi, user</p>
+                <a href="dashboard.html" style="padding: 0.5rem 1rem; display: block;">📊 My Dashboard</a>
+                <button id="logout-btn">🚪 Logout</button>
+              </div>
+            </div>
+            
+            
+            
+          </nav>
+      </header>
+
+  <main class="market-container">
+    <h2>Marketplace</h2>
+
+    <div class="filter-bar">
+      <input type="text" id="search-input" placeholder="Search items...">
+      <select id="category-filter">
+        <option value="all">Select Category</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Stationary">Stationary</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Other">Other</option>
+      </select>
+      <select id="price-filter">
+        <option value="all">Any Price</option>
+        <option value="0-500">₹0 - ₹500</option>
+        <option value="500-2000">₹500 - ₹2000</option>
+      </select>
+      <!-- <button id="toggle-sold">Hide Sold Items</button> -->
+    </div>
+
+    <div class="item-grid" id="item-list"></div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="market.js"></script>
+</body>
+</html>

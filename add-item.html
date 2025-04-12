@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Item - NITS Bazaar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="add-item.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>NITS Bazaar</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="market.html">🛒 Buy</a>
+      <a href="rentals.html">🧺 Rent</a>
+      <a href="add-item.html" class="active">➕ Add Item</a>
+      <div class="profile-dropdown" id="profile-menu" style="display: none;">
+        <button id="profile-btn">👤</button>
+        <div class="dropdown-content" id="dropdown-content">
+          <p id="user-name">Hi, user</p>
+          <a href="dashboard.html" style="padding: 0.5rem 1rem; display: block;">📊 My Dashboard</a>
+          <button id="logout-btn">🚪 Logout</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="add-item-container">
+    <h2>Add Your Item</h2>
+
+    <!-- ✅ Greeting outside the form -->
+    <p id="greeting-msg" style="margin-bottom: 1rem; font-weight: bold;"></p>
+
+    <form id="add-item-form">
+      <!-- Inside <form id="add-item-form"> -->
+<!-- Image Source Choice (Styled Radio Toggle) -->
+<div class="form-group image-toggle-options">
+  <label>
+    <input type="radio" name="image-source" value="upload" checked>
+    <span>📁 Upload Image</span>
+  </label>
+  <label>
+    <input type="radio" name="image-source" value="link">
+    <span>🔗 Paste Image Link</span>
+  </label>
+</div>
+
+<!-- Upload Section -->
+<div class="image-upload" id="upload-section">
+  <label for="item-image">
+    <div class="image-preview" id="image-preview">
+      <span>+ Upload Image</span>
+    </div>
+  </label>
+  <input type="file" id="item-image" accept="image/*" hidden>
+</div>
+
+<!-- Link Section -->
+<div class="form-group" id="link-section" style="display: none;">
+  <label for="image-link">Image URL</label>
+  <input type="url" id="image-link" placeholder="https://example.com/image.jpg">
+</div>
+
+    
+      <!-- Basic Fields -->
+      <div class="form-group">
+        <label for="item-title">Item Title*</label>
+        <input type="text" id="item-title" required>
+      </div>
+    
+      <div class="form-group">
+        <label for="item-desc">Description*</label>
+        <textarea id="item-desc" rows="3" required></textarea>
+      </div>
+    
+      <div class="form-group">
+        <label for="item-price">Price (₹)*</label>
+        <input type="number" id="item-price" required min="1">
+      </div>
+    
+      <div class="form-group">
+        <label for="item-category">Category*</label>
+        <select id="item-category" required>
+          <option value="">Select</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Books">Books</option>
+          <option value="Stationary">Stationary</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Clothing">Clothing</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    
+      <!-- Contact -->
+      <div class="form-group">
+        <label for="item-contact">Contact Number*</label>
+        <input type="tel" id="item-contact" pattern="[0-9]{10}" required>
+      </div>
+    
+      <button type="submit" class="submit-btn">Add Item</button>
+    </form>
+    
+  </main>
+
+  <!-- Success Modal -->
+  <div class="modal" id="success-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>🎉 Item Added Successfully!</h3>
+      <p>Your item is now visible in the marketplace.</p>
+      <div class="modal-buttons">
+        <button id="view-item">View Item</button>
+        <button id="add-another">Add Another</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="add-item.js" defer></script>
+</body>
+</html>

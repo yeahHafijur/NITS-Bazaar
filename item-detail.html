@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Item Details - NITS Bazaar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="market.css" />
+  <style>
+    /* Same styles as you had before, keeping it untouched */
+    .item-detail-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .item-gallery {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .main-image {
+      width: 100%;
+      height: 400px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: var(--bg);
+      padding: 1rem;
+    }
+    .item-title {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .item-price {
+      font-size: 1.8rem;
+      color: var(--primary);
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .item-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1rem 0;
+    }
+    .meta-card {
+      background: rgba(74, 144, 226, 0.1);
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .seller-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(74, 144, 226, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(74, 144, 226, 0.2);
+    }
+    #rental-section {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(255, 152, 0, 0.05);
+      border: 1px solid rgba(255, 152, 0, 0.2);
+      border-radius: 12px;
+    }
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex: 1;
+      min-width: 120px;
+    }
+    #call-btn {
+      background: #4CAF50;
+      color: white;
+      border: 2px solid #4CAF50;
+    }
+    #whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: 2px solid #25D366;
+    }
+    #rent-now-btn {
+      background: #FF9800;
+      color: white;
+      border: 2px solid #FF9800;
+      margin-top: 1rem;
+    }
+    .btn-contact:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      opacity: 0.9;
+    }
+    .btn-contact:active {
+      transform: translateY(1px);
+    }
+    .btn-contact span {
+      font-size: 1.2em;
+    }
+    .dark-mode .main-image {
+      background: #2d2d2d;
+    }
+    .dark-mode .seller-section {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .dark-mode .btn-contact {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 768px) {
+      .item-gallery {
+        grid-template-columns: 1fr;
+      }
+      .main-image {
+        height: 300px;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+      .item-title {
+        font-size: 1.8rem;
+      }
+      .btn-contact {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .item-meta {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .meta-card {
+        padding: 0.6rem 1rem;
+      }
+    }
+    .btn-share {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      background: #6c757d;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+    .btn-share:hover {
+      background: #5a6268;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NITS Bazaar</h1>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+      <a href="market.html">🛒 Buy</a>
+      <a href="rentals.html">🧺 Rent</a>
+      <a href="favorites.html">❤️ Favorites</a>
+    </nav>
+  </header>
+
+  <main class="item-detail-container">
+    <div class="item-gallery">
+      <img id="main-image" src="" alt="Item Image" class="main-image" />
+      <div class="item-info">
+        <h1 class="item-title" id="item-title"></h1>
+        <div class="item-meta">
+          <div class="meta-card">
+            <span>📦</span>
+            <span id="item-category"></span>
+          </div>
+          <div class="meta-card">
+            <span>🕒</span>
+            <span id="item-posted"></span>
+          </div>
+        </div>
+        <span class="item-price" id="item-price"></span>
+
+        <div class="item-description">
+          <h3>Description</h3>
+          <p id="item-desc"></p>
+        </div>
+
+        <div class="seller-section">
+          <h3>Seller Information</h3>
+          <p><strong>Posted by:</strong> <span id="item-owner"></span></p>
+          <p><strong>Contact:</strong> <span id="item-contact"></span></p>
+        </div>
+
+        <!-- ✅ Rental Section -->
+        <div id="rental-section" style="display: none;">
+          <h3>Rental Details</h3>
+          <p><strong>Rental Price:</strong> ₹<span id="rental-price-display"></span></p>
+          <p><strong>Rental Period:</strong> <span id="rental-period-display"></span></p>
+          <button class="btn-contact" id="rent-now-btn">📩 Rent Now</button>
+        </div>
+
+        <div class="action-buttons">
+          <a href="#" class="btn-contact" id="call-btn"><span>📞</span> Call Seller</a>
+          <a href="#" class="btn-contact" id="whatsapp-btn"><span>💬</span> WhatsApp</a>
+          <button class="btn-share" id="share-btn"><span>↗️</span> Share Item</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ at NIT Silchar</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+  
+      const item = JSON.parse(localStorage.getItem('selectedItem'));
+      if (!item) {
+        alert("Item not found!");
+        window.location.href = "market.html";
+        return;
+      }
+  
+      // Update view count
+      const allItems = JSON.parse(localStorage.getItem("items")) || [];
+      const idx = allItems.findIndex(i => i.id === item.id);
+      if (idx !== -1) {
+        allItems[idx].views = (allItems[idx].views || 0) + 1;
+        localStorage.setItem("items", JSON.stringify(allItems));
+        item.views = allItems[idx].views; // update local reference too
+      }
+  
+      document.getElementById("main-image").src = item.image || "https://via.placeholder.com/500";
+      document.getElementById("item-title").textContent = item.title;
+      document.getElementById("item-price").textContent = item.price;
+      document.getElementById("item-desc").textContent = item.desc;
+      document.getElementById("item-category").textContent = item.category;
+      document.getElementById("item-owner").textContent = item.user || "Anonymous";
+      document.getElementById("item-contact").textContent = item.contact || "Not shared";
+  
+      if (item.contact) {
+        document.getElementById("call-btn").href = `tel:${item.contact}`;
+        document.getElementById("whatsapp-btn").href = `https://wa.me/91${item.contact}`;
+      }
+  
+      const postedDate = item.id ? new Date(Number(item.id)).toLocaleDateString() : "Recently";
+      document.getElementById("item-posted").textContent = `Posted ${postedDate}`;
+  
+      if (item.isRental) {
+        document.getElementById("rental-section").style.display = "block";
+        document.getElementById("rental-price-display").textContent = item.rentalPrice;
+        document.getElementById("rental-period-display").textContent = item.rentalPeriod;
+  
+        document.getElementById("rent-now-btn").addEventListener("click", () => {
+          alert(`Rental request sent for ${item.title}!\nOwner will contact you on ${item.contact}`);
+        });
+      }
+    });
+  
+    document.getElementById("share-btn").addEventListener("click", () => {
+      const item = JSON.parse(localStorage.getItem("selectedItem"));
+      navigator.share?.({
+        title: `${item.title} - NITS Bazaar`,
+        text: `Check this ${item.title} for ₹${item.price}`,
+        url: window.location.href,
+      }).catch(() => {
+        prompt("Copy this link to share:", window.location.href);
+      });
+    });
+  </script>
+</body>
+</html>
